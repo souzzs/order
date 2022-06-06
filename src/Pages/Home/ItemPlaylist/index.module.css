@@ -1,0 +1,48 @@
+.playlist{
+    background-color: #50EF95;
+}
+
+.contentDecoration{
+    display: flex;
+    gap: 8px;
+    padding: 10px 5px;
+    border-bottom: 1px solid #000;
+}
+
+.contentDecoration span{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: .3s;
+}
+
+.content{
+    padding: 0 30px;
+    padding-bottom: 15px;
+}
+
+.content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 600;
+    color: #000;
+    margin-top: 0.938rem;
+    margin-bottom: 0.625rem;
+}
+
+.content img{
+    width: 100%;
+    height: 275px;
+    opacity: .8;
+    transition: .3s;
+}
+
+.playlist:hover img {
+    opacity: 1;
+}
+
+.playlist:hover .contentDecoration span {
+    background-color: #000;
+}

@@ -1,0 +1,19 @@
+.header{
+    background-color: #111;
+}
+
+.customContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.buttonOrder{
+    background-color: #1FCF6B;
+}
+
+.buttonCancelar{
+    background-color: #e54;
+}

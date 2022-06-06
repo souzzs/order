@@ -1,0 +1,22 @@
+.loader{
+    width: 50px;
+    height: 50px;
+    grid-column: 1/-1;
+    justify-self: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #1FCF6B;
+    animation: rotateLoader 1s infinite;
+}
+
+@keyframes rotateLoader{
+    from{
+        transform: rotateX(0) rotateY(0);
+    }
+    50%{
+        transform: rotateX(180deg) rotateY(0);
+    }
+    to{
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+}

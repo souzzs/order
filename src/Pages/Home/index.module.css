@@ -1,0 +1,13 @@
+.titlePlaylist{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.25rem;
+    line-height: 1.166;
+    font-weight: 600;
+    padding: 30px 0;
+}
+
+.containerPlaylist{
+    display: grid;
+    gap: 1.875rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}

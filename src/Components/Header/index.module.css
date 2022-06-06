@@ -1,0 +1,19 @@
+.header {
+  background-color: #000000;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: .938rem;
+  padding-bottom: .938rem;
+}
+
+.welcome {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #1FCF6B;
+}

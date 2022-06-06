@@ -1,0 +1,29 @@
+.customContainer{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 225px));
+}
+
+.music{
+    padding: 15px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.music:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+.music img {
+    width: 200px;
+    height: 200px;
+}
+
+.music h4{
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.music p{
+    font-size: 16px;
+}
