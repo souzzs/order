@@ -1,0 +1,12 @@
+.error{
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #e54;
+}
+
+.customContainer{
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -28,7 +28,7 @@ const useFecth = () => {
             
             return {json, response}
         }
-    });
+    }, []);
 
   return {data, error, loading, request}
 }

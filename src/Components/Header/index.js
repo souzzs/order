@@ -11,7 +11,7 @@ const Header = () => {
   else return (
     <header className={styles.header}>
       <div className={`container ${styles.flexContainer}`}>
-        <Link to='/home'> <img src={logo} alt="" /> </Link>
+        <Link to='/my-playlists'> <img src={logo} alt="" /> </Link>
         <h3 className={styles.welcome}>Bem vindo, {data.display_name}!</h3>
       </div>
     </header>

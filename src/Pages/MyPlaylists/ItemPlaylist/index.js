@@ -2,13 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router";
 import styles from "./index.module.css";
 
-const ItemPlayList = ({ itemData }) => {
+const ItemPlayList = ({ id, name, images }) => {
   const navigate = useNavigate();
 
   return (
     <div
       className={styles.playlist}
-      onClick={() => navigate(`/playlist/${itemData.id}`)}
+      onClick={() => navigate(`playlist/${id}`)}
     >
       <div className={styles.contentDecoration}>
         <span></span>
@@ -16,8 +16,8 @@ const ItemPlayList = ({ itemData }) => {
         <span></span>
       </div>
       <div className={styles.content}>
-        <h3> {itemData.name}</h3>
-        <img src={itemData.images[0].url} alt={itemData.name} />
+        <h3> {name}</h3>
+        <img src={images[0].url} alt={name} />
       </div>
     </div>
   );

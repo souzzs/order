@@ -1,9 +1,8 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
 import Header from "./Components/Header";
-import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import Playlist from "./Pages/Playlist";
+import RouteProtection from "./Pages/MyPlaylists/RouteProtection";
 
 function App() {
   return (
@@ -11,8 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/playlist/:id" element={<Playlist />} />
+        <Route path="/my-playlists/*" element={<RouteProtection />} />
       </Routes>
     </>
   );

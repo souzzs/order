@@ -55,7 +55,6 @@ const Login = () => {
     const hasToken = checkTokenUrl(hash) || checkTokenLocalStorage();
     
     if (hasToken) logar();
-
   }, []);
 
   if (loading) return <div className={styles.backgroundLoader}><Loader /></div>

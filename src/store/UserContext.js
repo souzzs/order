@@ -18,7 +18,7 @@ export const UserStorage = ({ children }) => {
     if(response.ok) {
       setData(json);
       setLogado(true);
-      navigate('/home')
+      navigate('/my-playlists')
     } else {
       localStorage.clear();
     }

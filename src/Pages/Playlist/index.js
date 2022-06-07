@@ -6,7 +6,7 @@ import { GET_PLAYLIST } from "../../services/api";
 import Header from "./Header";
 import MusicList from "./MusicList";
 
-function Playlist() {
+const Playlist = () => {
   const params = useParams();
   const { request, data, error, loading } = useFecth();
   const [actionOrder, setActionOrder] = React.useState(false);
@@ -17,10 +17,10 @@ function Playlist() {
     const getMusics = async () => {
       const idPlaylist = params.id;
       const {url, options} = GET_PLAYLIST(idPlaylist);
-      const {json, response} = await request(url, options);
+      await request(url, options);
     };
     getMusics();
-  }, []);
+  }, [params.id, request]);
 
   if(loading || !data) return <Loader />
   return (
