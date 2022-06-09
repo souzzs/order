@@ -14,6 +14,12 @@
     background-color: #1FCF6B;
 }
 
+.buttonOrder:disabled{
+    background-color: #7dffb5;
+    cursor: auto;
+}
+
+
 .buttonCancelar{
     background-color: #e54;
 }

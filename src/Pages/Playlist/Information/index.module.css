@@ -1,0 +1,13 @@
+.bgBaclks{
+    width: 100%;
+    height: 10px;
+    background-color: #000;
+    overflow-x: hidden;
+}
+
+.progressBar{
+    height: 10px;
+    background-color: #1FCF6B;
+    transition: .3s;
+}
+

@@ -5,6 +5,7 @@ import useFecth from "../../Hooks/useFecth";
 import { GET_PLAYLIST } from "../../services/api";
 import { PlaylistContext } from "../../store/PlaylistContext";
 import Header from "./Header";
+import Information from "./Information";
 import MusicList from "./MusicList";
 
 const Playlist = () => {
@@ -26,6 +27,7 @@ const Playlist = () => {
   return (
     <section>
       <Header />
+      <Information />
       <MusicList />
     </section>
   );

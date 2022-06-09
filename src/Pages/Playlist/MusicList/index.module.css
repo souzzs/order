@@ -4,6 +4,14 @@
     grid-template-columns: repeat(auto-fit, minmax(175px, 225px));
 }
 
+.alertInformation{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-top: 5px;
+    text-align: center;
+    grid-column: 1/-1;
+}
+
 .music{
     padding: 15px;
     transition: .3s;
@@ -26,4 +34,8 @@
 
 .music p{
     font-size: 16px;
+}
+
+.addMusic{
+    opacity: .7;
 }
