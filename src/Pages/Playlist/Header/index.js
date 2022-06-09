@@ -1,16 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import Alert from "../../../Components/Alert";
 import useFecth from "../../../Hooks/useFecth";
 import { PUT_ORDER_PLAYLIST } from "../../../services/api";
 import { PlaylistContext } from "../../../store/PlaylistContext";
 import styles from "./index.module.css";
 
 const Header = () => {
-  const { request, error, loading } = useFecth();
+  const { request, error } = useFecth();
+  const [sucess, setSucess] = React.useState(null);
   const navigate = useNavigate();
-  const { dataPlaylist, editOrder, setEditOrder, urisSongs, urisOrder} =
+  const { dataPlaylist, editOrder, setEditOrder, urisSongs, urisOrder } =
     React.useContext(PlaylistContext);
-  const [title, setTitle] = React.useState('');
+  const [title, setTitle] = React.useState("");
   const saveOrder = async () => {
     const songsNoOrder = urisSongs.filter((song) => !urisOrder.includes(song));
     const urisString = urisOrder.concat(songsNoOrder).join(",");
@@ -22,8 +24,8 @@ const Header = () => {
 
     const { url, options } = PUT_ORDER_PLAYLIST(idPlaylist, urisString, body);
     const {response} = await request(url, options);
-    
-    if(response.ok) navigate('/my-playlists');
+    setSucess(response.ok);
+    navigate("/my-playlists");
   };
 
   const actionButton = async () => {
@@ -36,9 +38,9 @@ const Header = () => {
   };
 
   React.useEffect(() => {
-    if(editOrder && urisOrder.length <= urisSongs.length){
+    if (editOrder && urisOrder.length <= urisSongs.length) {
       // Bug pois esta passando do máximo de música de a playlist tem, entretanto é só visual
-      setTitle(`Escolha a ${urisOrder.length + 1}º música`)
+      setTitle(`Escolha a ${urisOrder.length + 1}º música`);
     } else {
       setTitle(dataPlaylist.name);
     }
@@ -46,19 +48,27 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
+      {sucess !== null && !sucess && <Alert message={error} type="error" />}
+      {sucess !== null && sucess && <Alert message='Sucesso ao alterar sua playlist!!!' type="sucess" />}
       <div className={`container ${styles.customContainer}`}>
-        <h3>{title}</h3>
-        <button disabled={urisOrder.length > 0 || !editOrder ? false : true} className={styles.buttonOrder} onClick={() => actionButton()}>
-          {editOrder ? "Finalizar" : "Ordenar"}
-        </button>
-        {editOrder && (
+        <h3 className={styles.title}>{title}</h3>
+        <div className={styles.controls}>
           <button
-            className={styles.buttonCancelar}
-            onClick={() => setEditOrder(false)}
+            disabled={urisOrder.length > 0 || !editOrder ? false : true}
+            className={styles.buttonOrder}
+            onClick={() => actionButton()}
           >
-            Cancelar
+            {editOrder ? "Finalizar" : "Ordenar"}
           </button>
-        )}
+          {editOrder && (
+            <button
+              className={styles.buttonCancelar}
+              onClick={() => setEditOrder(false)}
+            >
+              Cancelar
+            </button>
+          )}
+        </div>
       </div>
     </header>
   );

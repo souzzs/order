@@ -5,9 +5,10 @@ import styles from "./index.module.css";
 import { REDIRECT_URL_TOKEN } from "../../services/api";
 import { UserContext } from "../../store/UserContext";
 import Loader from "../../Components/Loader";
+import Alert from "../../Components/Alert";
 
 const Login = () => {
-  const {logar, error, loading} = React.useContext(UserContext);
+  const { logar, error, loading } = React.useContext(UserContext);
 
   // Salva o token no localStorage
   const saveToken = (paramsInUrl) => {
@@ -53,24 +54,37 @@ const Login = () => {
   React.useEffect(() => {
     const { hash } = window.location;
     const hasToken = checkTokenUrl(hash) || checkTokenLocalStorage();
-    
+
     if (hasToken) logar();
   }, []);
 
-  if (loading) return <div className={styles.backgroundLoader}><Loader /></div>
-  else return (
-    <section className={styles.login}>
-      <div className={styles.content}>
-        <img src={logo} alt="" />
-        <p className={styles.phrase}>Organize músicas como preferir. </p>
-        <button onClick={REDIRECT_URL_TOKEN}>
-          <img src={iconButton} alt="" />
-          Sign In
-        </button>
-        {error ? <p className={styles.error}>Erro ao realizar o login. Tente novamente. </p> : undefined}
+  if (loading)
+    return (
+      <div className={styles.backgroundLoader}>
+        <Loader />
       </div>
-    </section>
-  );
+    );
+  else if (error) return <Alert message={error} type='error' />;
+  else
+    return (
+      <>
+        <section className={styles.login}>
+          <div className={styles.content}>
+            <img src={logo} alt="" />
+            <p className={styles.phrase}>Organize músicas como preferir. </p>
+            <button onClick={REDIRECT_URL_TOKEN}>
+              <img src={iconButton} alt="" />
+              Sign In
+            </button>
+            {error ? (
+              <p className={styles.error}>
+                Erro ao realizar o login. Tente novamente.{" "}
+              </p>
+            ) : undefined}
+          </div>
+        </section>
+      </>
+    );
 };
 
 export default Login;

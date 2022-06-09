@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 
 const ListPlaylist = ({ data }) => {
   return (
-    <section>
+    <section className={styles.content}>
       <div className="container">
         <h1 className={styles.titlePlaylist}>Suas playlists</h1>
         <div className={styles.containerPlaylist}>

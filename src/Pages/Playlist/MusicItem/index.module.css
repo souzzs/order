@@ -1,0 +1,32 @@
+
+.music{
+    padding: 15px;
+    transition: .3s;
+    border-radius: 3px;
+}
+
+.music:hover{
+    background-color: #e4f8ed;
+}
+
+.music img {
+    width: 200px;
+    height: 200px;
+}
+
+.music h4{
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.music p{
+    font-size: 16px;
+}
+
+.addMusic{
+    opacity: .7;
+}
+
+.addMusic:hover{
+    background-color: initial;
+}

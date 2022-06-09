@@ -8,6 +8,7 @@ import Playlist from "../Playlist";
 import ListPlaylist from "./ListPlaylist";
 import styles from "./index.module.css";
 import { PlaylistStorage } from "../../store/PlaylistContext";
+import Alert from "../../Components/Alert";
 
 const MyPlaylists = () => {
   const ctx = React.useContext(UserContext);
@@ -21,24 +22,26 @@ const MyPlaylists = () => {
     dataPlaylists();
   }, []);
 
-  if (error)
-    return (
-      <div className={`container ${styles.error} ${styles.customContainer}`}>
-        <p>Erro ao buscar suas playlists</p>
-      </div>
-    );
-  else if (loading)
+  if (loading)
     return (
       <div className={`container ${styles.customContainer}`}>
         {" "}
         <Loader />{" "}
       </div>
     );
+  else if (error) return <Alert type='error' message={error} />;
   else if (data)
     return (
       <Routes>
         <Route path="/" element={<ListPlaylist data={data} />} />
-          <Route path="/playlist/:id" element={<PlaylistStorage><Playlist /></PlaylistStorage>} />
+        <Route
+          path="/playlist/:id"
+          element={
+            <PlaylistStorage>
+              <Playlist />
+            </PlaylistStorage>
+          }
+        />
       </Routes>
     );
   else return null;

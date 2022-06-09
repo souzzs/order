@@ -6,13 +6,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: .938rem;
-  padding-bottom: .938rem;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .welcome {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
+    font-size: 24;
     font-weight: 600;
     line-height: 1.25;
     color: #1FCF6B;

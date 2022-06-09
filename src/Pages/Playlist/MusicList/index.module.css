@@ -2,6 +2,20 @@
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(auto-fit, minmax(175px, 225px));
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.edit > div{
+    cursor: pointer;
+}
+
+.noEdit > div{
+    cursor: auto;
+}
+
+.noEdit > div:hover{
+    background-color: initial;
 }
 
 .alertInformation{
@@ -10,32 +24,4 @@
     margin-top: 5px;
     text-align: center;
     grid-column: 1/-1;
-}
-
-.music{
-    padding: 15px;
-    transition: .3s;
-    cursor: pointer;
-}
-
-.music:hover{
-    background-color: rgb(235, 235, 235);
-}
-
-.music img {
-    width: 200px;
-    height: 200px;
-}
-
-.music h4{
-    font-size: 24px;
-    margin: 5px 0;
-}
-
-.music p{
-    font-size: 16px;
-}
-
-.addMusic{
-    opacity: .7;
 }

@@ -1,23 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router";
+import Alert from "../../../Components/Alert";
 import Loader from "../../../Components/Loader";
 import useFecth from "../../../Hooks/useFecth";
-import { GET_MUSICS, PUT_ORDER_PLAYLIST } from "../../../services/api";
+import { GET_MUSICS } from "../../../services/api";
 import { PlaylistContext } from "../../../store/PlaylistContext";
+import MusicItem from "../MusicItem";
 import styles from "./index.module.css";
 
 const MusicList = () => {
-  const { request, data, loading } = useFecth();
-  const {
-    setUrisSongs,
-    dataPlaylist,
-    editOrder,
-    setUrisOrder,
-    urisOrder,
-    urisSongs,
-  } = React.useContext(PlaylistContext);
+  const { request, data, loading, error } = useFecth();
+  const { setUrisSongs, dataPlaylist, editOrder, urisOrder, urisSongs } =
+    React.useContext(PlaylistContext);
   const [alertInformation, setAlertInformation] = React.useState(
     "Obs: É necessário alterar pelo menos uma música antes de finalizar."
   );
+  const navigate = useNavigate();
   const ids = dataPlaylist.tracks.items.map((music) => music.track.id);
   const idsString = ids.join(",");
   const [limit, setLimit] = React.useState(false);
@@ -50,51 +48,37 @@ const MusicList = () => {
     }
   }, [urisSongs, urisOrder]);
 
-  // Ele não substitui a música na ordem correta
-  const addUri = (uri, currentTarget) => {
-    if (editOrder) {
-      if (!limit && !urisOrder.includes(currentTarget.id)) {
-        setUrisOrder((u) => [...u, uri]);
-        console.log('nao add', urisOrder, currentTarget.id);
-      }
-      if (urisOrder.includes(currentTarget.id)) {
-        const newDataOrder = urisOrder.filter(
-          (uri) => uri !== currentTarget.id
-        );
-        setUrisOrder(newDataOrder);
-        console.log('ja add');
-      }
-    }
-  };
-
-  if (!data) return <Loader />;
-  else
+  if (error) {
+    navigate("/my-playlists");
+    return <Alert error={error} type='error'/>;
+  } else if (loading) <Loader />;
+  else if (data)
     return (
-      <div className={`container ${styles.customContainer}`}>
+      <div
+        className={`container ${styles.customContainer} ${
+          editOrder ? styles.edit : styles.noEdit
+        }`}
+      >
         <p className={styles.alertInformation}>{alertInformation}</p>
         {data?.tracks.map((music) => {
           const singer = music.artists[0].name;
           const img = music.album.images[0].url;
           const nameMusic = music.name;
           return (
-            <div
-              id={music.uri}
+            <MusicItem
               key={music.id}
-              onClick={({ currentTarget }) => addUri(music.uri, currentTarget)}
-              className={
-                urisOrder.includes(music.uri)
-                  ? `${styles.addMusic} ${styles.music}`
-                  : `${styles.music}`
-              }
-            >
-              <img src={img} alt={nameMusic} />
-              <h4>{nameMusic}</h4>
-              <p>{singer}</p>
-            </div>
+              uri={music.uri}
+              id={music.id}
+              img={img}
+              name={nameMusic}
+              singer={singer}
+              limit={limit}
+            />
           );
         })}
       </div>
     );
+  else return null;
 };
 
 export default MusicList;

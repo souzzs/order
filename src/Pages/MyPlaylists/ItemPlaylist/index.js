@@ -16,7 +16,7 @@ const ItemPlayList = ({ id, name, images }) => {
         <span></span>
       </div>
       <div className={styles.content}>
-        <h3> {name}</h3>
+        <h3>{name.length >= 18 ? `${name.substring(0, 14)} ...` : name.substring(0, 18) }</h3>
         <img src={images[0].url} alt={name} />
       </div>
     </div>

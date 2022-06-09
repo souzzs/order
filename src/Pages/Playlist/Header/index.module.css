@@ -10,6 +10,17 @@
     padding-bottom: 30px;
 }
 
+.controls{
+    display: flex;
+    gap: 30px;
+}
+
+.title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    color: #fff;
+}
+
 .buttonOrder{
     background-color: #1FCF6B;
 }
