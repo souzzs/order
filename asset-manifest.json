@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/order/static/css/main.4e36d9e8.css",
+    "main.js": "/order/static/js/main.c7c8d87e.js",
+    "static/media/logo.svg": "/order/static/media/logo.6430cfdf15ffce8ad3756a3e317ba807.svg",
+    "static/media/instagram.svg": "/order/static/media/instagram.42f6c2360ae739bee7cda9add7bab949.svg",
+    "static/media/discord.svg": "/order/static/media/discord.c1a1831b9fa615daf56f5195b77ffc6f.svg",
+    "static/media/github.svg": "/order/static/media/github.fe89dfb2b3aa2d578a287d1f206a86b5.svg",
+    "static/media/linkedin.svg": "/order/static/media/linkedin.26997d006469e835052b604fc6c6a292.svg",
+    "index.html": "/order/index.html",
+    "static/media/icon-button.svg": "/order/static/media/icon-button.024274a4678b6e70d789efbce3bc0933.svg",
+    "main.4e36d9e8.css.map": "/order/static/css/main.4e36d9e8.css.map",
+    "main.c7c8d87e.js.map": "/order/static/js/main.c7c8d87e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e36d9e8.css",
+    "static/js/main.c7c8d87e.js"
+  ]
+}
