@@ -10,36 +10,6 @@ import Alert from "../../Components/Alert";
 const Login = () => {
   const { logar, error, loading } = React.useContext(UserContext);
 
-  // Salva o token no localStorage
-  const saveToken = (paramsInUrl) => {
-    const paramsSplitUp = paramsInUrl.reduce((accumulater, currentValue) => {
-      const [key, value] = currentValue.split("=");
-      accumulater[key] = value;
-      return accumulater;
-    }, {});
-    const { access_token, expires_in, token_type } = paramsSplitUp;
-
-    localStorage.clear();
-    localStorage.setItem("accessToken", access_token);
-    localStorage.setItem("tokenType", token_type);
-    localStorage.setItem("expiresIn", expires_in);
-  };
-
-  // Verifica se há algum token para ser pego na url
-  const checkTokenUrl = (hash) => {
-    const stringAfterHashtag = hash.substring(1);
-    const params = stringAfterHashtag.split("&");
-
-    const haveToken = !params.includes("");
-
-    if (haveToken) {
-      saveToken(params);
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   // Verifica se há algum token no localStorage
   const checkTokenLocalStorage = () => {
     const accessToken = localStorage.getItem("accessToken");
@@ -52,10 +22,7 @@ const Login = () => {
 
   // Verifica se há um token no localStorage ou url, caso há é feito o login do usuário.
   React.useEffect(() => {
-    const { hash } = window.location;
-    const hasToken = checkTokenUrl(hash) || checkTokenLocalStorage();
-
-    if (hasToken) logar();
+    if(checkTokenLocalStorage()) logar();
   }, []);
 
   if (loading)

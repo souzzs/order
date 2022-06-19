@@ -3,7 +3,7 @@ const URL_API = "https://api.spotify.com/v1";
 // Dados para montar a url de solicitação de autorização
 const CLIENT_ID = "58b64a6855c74847b3984cab76959270";
 const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000/";
+const REDIRECT_URL_AFTER_LOGIN = "https://souzzs.github.io/order/";
 const SPACE_DELIMITER = "%20";
 const SCOPES = [
   "user-read-currently-playing",

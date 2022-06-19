@@ -5,7 +5,7 @@ import { UserContext } from "../../store/UserContext";
 
 const RouteProtection = () => {
   const { logado } = React.useContext(UserContext);
-
+  
   if (logado) return <MyPlaylists />;
   else if (logado === false) return <Navigate to="/" />;
   else return null;
